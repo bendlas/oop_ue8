@@ -1,11 +1,12 @@
 
-public class TreasureHunter extends Thread {
+public class TreasureHunter extends BasicPlayer {
 	
 	public static int maxSteps = 50;
 	private String name;
 	private int steps, consumedTreasures;
 	
-	public TreasureHunter(String name){
+	public TreasureHunter(Labyrinth lab, int x, int y, String name){
+		super(lab, x, y);
 		this.name = name;
 		steps = 0;
 		consumedTreasures = 0;
@@ -25,7 +26,7 @@ public class TreasureHunter extends Thread {
 		steps++;
 		return true;
 		
-		//TODO: exit aufrufen, falls noMoreWall u !insideLab ODER maxSteps erreicht
+		//TODO: kill aufrufen, falls noMoreWall u !insideLab ODER maxSteps erreicht
 	}
 	
 	public void eatTreasure(int treasure){
