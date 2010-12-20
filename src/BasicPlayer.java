@@ -17,6 +17,11 @@ public abstract class BasicPlayer extends Thread {
 		field = labyrinth.fields[Labyrinth.rand.nextInt(labyrinth.getWidth())][Labyrinth.rand.nextInt(labyrinth.getHeight())];
 		enterTo(field);
 	}
+	public boolean isPlayerAlive(){
+		return alive;
+	}
+	
+	
 	abstract public void print();
 	abstract protected void enterTo(Field field);
 	public void run(){

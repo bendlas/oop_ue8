@@ -54,6 +54,15 @@ public class Labyrinth {
 		return fields[0].length;
 	}
 	
+	public boolean someAlive(){
+		for (BasicPlayer p : players) {
+			if(p instanceof TreasureHunter){
+				if(p.isPlayerAlive()) return true;
+			}
+		}
+		return false;
+	}
+	
 	//inv: fields.length > 0; fields[x].length == fields[y].length; fields[x].length > 0;
 	Field[][] fields;
 	

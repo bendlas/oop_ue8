@@ -17,11 +17,13 @@ public class TreasureHunter extends BasicPlayer {
 	
 	public void kill() {
 		alive = false;
+		if(!labyrinth.someAlive()) labyrinth.finish();
 	}
 	
 	public void addTreasure(int treasure){
 		purse += treasure;
 	}
+	
 
 	@Override
 	public void print() {
