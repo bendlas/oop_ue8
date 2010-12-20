@@ -1,10 +1,28 @@
-import java.util.Arrays;
-
-
 public class Test {
 	public static void main(String[] args) {
-		error("Please define Tests");
-		assert_(false, "No tests defined");
+		Labyrinth lab = new Labyrinth(50, 50);
+		new TreasureHunter(lab, "Karl");
+		new TreasureHunter(lab, "Fritz");
+		new TreasureHunter(lab, "Sepp");
+		new TreasureHunter(lab, "Franz");
+		new TreasureHunter(lab, "Andi");
+		
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+		
+		lab.run();
+		lab.waitFinish();
 	}
 	public static void out(String...out) {
 		for (String s : out) {

@@ -1,33 +1,49 @@
 
-//ghost or treasureHunter
 public abstract class BasicPlayer extends Thread {
-
-	protected Labyrinth lab;
-	protected int xPosition, yPosition;
-	protected boolean active;
-	public static final int SLEEP_TIME = 40;
+	protected final Labyrinth labyrinth;
+	protected Field field;
+	volatile protected boolean alive = true;
+	public static final int SLEEP_TIME = 4;
 	
-	public BasicPlayer(Labyrinth lab, int x, int y){
-		this.lab = lab;
-		xPosition = x;
-		yPosition = y;
-		active = true;
+	public BasicPlayer(Labyrinth labyrinth, int x, int y){
+		labyrinth.addPlayer(this);
+		this.labyrinth = labyrinth;
+		field = this.labyrinth.fields[x][y];
+		enterTo(field);
 	}
-	
+	public BasicPlayer(Labyrinth labyrinth) {
+		labyrinth.addPlayer(this);
+		this.labyrinth = labyrinth;
+		field = labyrinth.fields[Labyrinth.rand.nextInt(labyrinth.getWidth())][Labyrinth.rand.nextInt(labyrinth.getHeight())];
+		enterTo(field);
+	}
+	abstract public void print();
+	abstract protected void enterTo(Field field);
 	public void run(){
-		while (getActive()){
+		while (labyrinth.running){
+			Field next = labyrinth.randomNext(field);
+			synchronized (field) {
+				if (alive) {
+					field.leave(this);
+					field = null;
+				} else {
+					return;
+				}
+			}
+			// separate synchronized blocks leave a small window in which Hunters can't be eaten
+			// which is arguably better than risking deadlock with nested synchronized blocks
+			synchronized (next) {
+				enterTo(next);
+				if (alive){
+					field = next;
+				} else {
+					return;
+				}
+			}
 			try {
 				Thread.sleep(SLEEP_TIME);
-			} catch (InterruptedException ex){ }
+			} catch (InterruptedException ex){
+			}
 		}
-	}
-	
-	public synchronized boolean getActive(){
-		return active;
-	}
-	
-	public synchronized void kill(){
-		active = false;
-		this.interrupt();
 	}
 }
