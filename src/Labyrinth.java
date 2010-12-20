@@ -103,11 +103,11 @@ public class Labyrinth {
 		int choices = 0;
 		choice[choices] = from;
 		choices++;
-		if (from.x + 1 < fields.length && ! from.eastWall) {
+		if (from.x + 1 < getWidth() && ! from.eastWall) {
 			choice[choices] = fields[from.x + 1][from.y];
 			choices++;
 		}
-		if (from.y + 1 < fields[0].length && ! from.northWall) {
+		if (from.y + 1 < getHeight() && ! from.northWall) {
 			choice[choices] = fields[from.x][from.y + 1];
 			choices++;
 		}

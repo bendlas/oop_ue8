@@ -3,7 +3,10 @@ public abstract class BasicPlayer extends Thread {
 	protected final Labyrinth labyrinth;
 	protected Field field;
 	volatile protected boolean alive = true;
-	public static final int SLEEP_TIME = 4;
+	
+	protected long getSleepTime() {
+		return 2 + Labyrinth.rand.nextInt(8);
+	}
 	
 	public BasicPlayer(Labyrinth labyrinth, int x, int y){
 		labyrinth.addPlayer(this);
@@ -46,7 +49,7 @@ public abstract class BasicPlayer extends Thread {
 				}
 			}
 			try {
-				Thread.sleep(SLEEP_TIME);
+				Thread.sleep(getSleepTime());
 			} catch (InterruptedException ex){
 			}
 		}
