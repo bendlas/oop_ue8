@@ -21,6 +21,7 @@ public class Test {
 		new Ghost(lab);
 		new Ghost(lab);
 		
+		
 		lab.run();
 		lab.waitFinish();
 	}
