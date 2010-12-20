@@ -98,6 +98,10 @@ public class Labyrinth {
 		this.fields = fields;
 	}
 	
+	public Field getField(int x, int y) {
+		return fields[x][y];
+	}
+	
 	public Field randomNext(Field from) {
 		Field[] choice = new Field[5];
 		int choices = 0;

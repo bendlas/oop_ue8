@@ -1,3 +1,5 @@
+import javax.swing.JFrame;
+
 public class Test {
 	public static void main(String[] args) {
 		testcase1();
@@ -11,6 +13,9 @@ public class Test {
 		info("a normal run..."  + "\n");
 		
 		Labyrinth lab = new Labyrinth(60, 60);
+		JFrame win = new MainFrame(lab);
+		win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		win.setVisible(true);
 		new TreasureHunter(lab, "Karl");
 		new TreasureHunter(lab, "Fritz");
 		new TreasureHunter(lab, "Sepp");

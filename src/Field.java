@@ -17,6 +17,9 @@ public class Field {
 		this.y = y;
 	}
 	
+	synchronized public int getTreasure() {
+		return treasure;
+	}
 	
 	synchronized public void enter(Ghost player) {
 		ghosts.add(player);
