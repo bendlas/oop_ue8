@@ -50,4 +50,10 @@ public class Field {
 			}
 		}
 	}
+
+	public Set<BasicPlayer> getPlayers() {
+		Set<BasicPlayer> ret = new HashSet<BasicPlayer>(hunters);
+		ret.addAll(ghosts);
+		return ret;
+	}
 }

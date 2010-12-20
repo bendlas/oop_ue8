@@ -1,6 +1,9 @@
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
+
+import javax.management.ImmutableDescriptor;
 
 
 public class Labyrinth {
@@ -101,6 +104,11 @@ public class Labyrinth {
 	public Field getField(int x, int y) {
 		return fields[x][y];
 	}
+	
+	public Set<BasicPlayer> getPlayer(){
+		return players;
+	}
+	
 	
 	public Field randomNext(Field from) {
 		Field[] choice = new Field[5];
