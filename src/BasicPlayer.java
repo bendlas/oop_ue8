@@ -5,7 +5,7 @@ public abstract class BasicPlayer extends Thread {
 	volatile protected boolean alive = true;
 	
 	protected long getSleepTime() {
-		return 2 + Labyrinth.rand.nextInt(8);
+		return 20 + Labyrinth.rand.nextInt(80);
 	}
 	
 	public BasicPlayer(Labyrinth labyrinth, int x, int y){

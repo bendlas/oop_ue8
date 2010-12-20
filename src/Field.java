@@ -4,6 +4,13 @@ import java.util.Set;
 
 
 public class Field {
+	public interface ITickCallback {
+		public void onTick(Field field);
+	}
+	private ITickCallback cb;
+	public synchronized void setCb(ITickCallback cb) {
+		this.cb = cb;
+	}
 	public final boolean northWall, eastWall;
 	public final int x, y;
 	private int treasure;
@@ -15,6 +22,24 @@ public class Field {
 		this.treasure = treasure;
 		this.x = x;
 		this.y = y;
+	}
+
+	private void logicTick() {
+		Iterator<TreasureHunter> hunterSeq = hunters.iterator();
+		if (ghosts.size() > 0) { // call ghostbusters
+			while (hunterSeq.hasNext()) {
+				hunterSeq.next().kill();
+				hunterSeq.remove();
+			}
+		} else { // no fear
+			if (hunterSeq.hasNext()) {
+				hunterSeq.next().addTreasure(treasure);
+				treasure = 0;
+			}
+		}
+		if (cb != null) {
+			cb.onTick(this);
+		}
 	}
 	
 	synchronized public int getTreasure() {
@@ -36,20 +61,6 @@ public class Field {
 		hunters.remove(player);
 	}
 	
-	private void logicTick() {
-		Iterator<TreasureHunter> hunterSeq = hunters.iterator();
-		if (ghosts.size() > 0) { // call ghostbusters
-			while (hunterSeq.hasNext()) {
-				hunterSeq.next().kill();
-				hunterSeq.remove();
-			}
-		} else { // no fear
-			if (hunterSeq.hasNext()) {
-				hunterSeq.next().addTreasure(treasure);
-				treasure = 0;
-			}
-		}
-	}
 
 	public Set<BasicPlayer> getPlayers() {
 		Set<BasicPlayer> ret = new HashSet<BasicPlayer>(hunters);

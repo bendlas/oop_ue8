@@ -27,6 +27,7 @@ public class MainFrame extends JFrame {
 
 					g.setColor(Color.BLACK);
 					Field here = labyrinth.getField(x, y);
+					here.setCb(cb);
 					if (here.eastWall) {
 						drawEast(g, rx, ry, fw, fh);
 					}
@@ -72,7 +73,7 @@ public class MainFrame extends JFrame {
 			int x1 = (int) x;
 			int x2 = (int) (x+fw);
 //			System.out.println(String.format("(%d,%d,%f,%f,%d,%d,%d)", x, y, fw, fh, x1, x2, y));
-			g.drawLine(x1, y, x2, y);
+			g.drawLine(x1, y + (int) fh, x2, y + (int) fh);
 		}
 
 		private void drawEast(Graphics g, int x, int y, float fw, float fh) {
@@ -81,6 +82,13 @@ public class MainFrame extends JFrame {
 			int y2 = (int) (y+fh);
 			g.drawLine(x, y1, x, y2);
 		}		
+	};
+	
+	private Field.ITickCallback cb = new Field.ITickCallback() {
+		@Override
+		public void onTick(Field field) {
+			repaint();
+		}
 	};
 	
 	public MainFrame(Labyrinth lab) {
