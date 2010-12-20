@@ -79,7 +79,11 @@ public class Test {
 		new Ghost(lab);
 		new Ghost(lab);
 		new Ghost(lab);
-		
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
 		
 		lab.run();
 		lab.waitFinish();
@@ -91,8 +95,6 @@ public class Test {
 
 		new TreasureHunter(lab, 5, 5, "Born2Die");
 		new Ghost(lab, 5, 5);
-		
-		new TreasureHunter(lab, "HansimGlück");
 		
 		lab.run();
 		lab.waitFinish();

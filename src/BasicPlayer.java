@@ -12,13 +12,11 @@ public abstract class BasicPlayer extends Thread {
 		labyrinth.addPlayer(this);
 		this.labyrinth = labyrinth;
 		field = this.labyrinth.fields[x][y];
-		enterTo(field);
 	}
 	public BasicPlayer(Labyrinth labyrinth) {
 		labyrinth.addPlayer(this);
 		this.labyrinth = labyrinth;
 		field = labyrinth.fields[Labyrinth.rand.nextInt(labyrinth.getWidth())][Labyrinth.rand.nextInt(labyrinth.getHeight())];
-		enterTo(field);
 	}
 	public boolean isPlayerAlive(){
 		return alive;
@@ -28,6 +26,7 @@ public abstract class BasicPlayer extends Thread {
 	abstract public void print();
 	abstract protected void enterTo(Field field);
 	public void run(){
+		enterTo(field);
 		while (labyrinth.running){
 			Field next = labyrinth.randomNext(field);
 			synchronized (field) {

@@ -9,7 +9,7 @@ public class TreasureHunter extends BasicPlayer {
 		super(lab, x, y);
 		this.name = name;
 	}
-	
+
 	public TreasureHunter(Labyrinth lab, String name) {
 		super(lab);
 		this.name = name;
