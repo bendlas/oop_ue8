@@ -10,7 +10,7 @@ public class Test {
 		info("--------- Testcase 1 ---------");
 		info("a normal run..."  + "\n");
 		
-		Labyrinth lab = new Labyrinth(50, 50);
+		Labyrinth lab = new Labyrinth(60, 60);
 		new TreasureHunter(lab, "Karl");
 		new TreasureHunter(lab, "Fritz");
 		new TreasureHunter(lab, "Sepp");
@@ -23,8 +23,6 @@ public class Test {
 		new Ghost(lab);
 		new Ghost(lab);
 		new Ghost(lab);
-
-		
 		
 		lab.run();
 		lab.waitFinish();
@@ -33,19 +31,14 @@ public class Test {
 		info("\n" + "\n" + "--------- Testcase 2 ---------" );
 		info(" a lot of Ghosts..."+ "\n");
 		
-		Labyrinth lab = new Labyrinth(80, 80);
+		Labyrinth lab = new Labyrinth(30, 40);
 		new TreasureHunter(lab, "Karl");
 		new TreasureHunter(lab, "Fritz");
 		new TreasureHunter(lab, "Sepp");
 		new TreasureHunter(lab, "Franz");
 		new TreasureHunter(lab, "Andi");
 		
-		new Ghost(lab);
-		new Ghost(lab);
-		new Ghost(lab);
-		new Ghost(lab);
-		new Ghost(lab);
-		new Ghost(lab);
+		
 		new Ghost(lab);
 		new Ghost(lab);
 		new Ghost(lab);
