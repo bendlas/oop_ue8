@@ -40,7 +40,6 @@ public class Field {
 				hunterSeq.next().kill();
 				hunterSeq.remove();
 			}
-			hunters.clear();
 		} else { // no fear
 			if (hunterSeq.hasNext()) {
 				hunterSeq.next().addTreasure(treasure);
