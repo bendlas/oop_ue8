@@ -3,42 +3,43 @@ public class Test {
 		testcase1();
 		testcase2();
 		testcase3();
+		testcase4();
 	}
-	
+
 	private static void testcase1(){
-		
+
 		info("--------- Testcase 1 ---------");
 		info("a normal run..."  + "\n");
-		
+
 		Labyrinth lab = new Labyrinth(60, 60);
 		new TreasureHunter(lab, "Karl");
 		new TreasureHunter(lab, "Fritz");
 		new TreasureHunter(lab, "Sepp");
 		new TreasureHunter(lab, "Franz");
 		new TreasureHunter(lab, "Andi");
-		
+
 		new Ghost(lab);
 		new Ghost(lab);
 		new Ghost(lab);
 		new Ghost(lab);
 		new Ghost(lab);
 		new Ghost(lab);
-		
+
 		lab.run();
 		lab.waitFinish();
 	}
 	private static void testcase2(){
 		info("\n" + "\n" + "--------- Testcase 2 ---------" );
 		info(" a lot of Ghosts..."+ "\n");
-		
+
 		Labyrinth lab = new Labyrinth(30, 40);
 		new TreasureHunter(lab, "Karl");
 		new TreasureHunter(lab, "Fritz");
 		new TreasureHunter(lab, "Sepp");
 		new TreasureHunter(lab, "Franz");
 		new TreasureHunter(lab, "Andi");
-		
-		
+
+
 		new Ghost(lab);
 		new Ghost(lab);
 		new Ghost(lab);
@@ -77,26 +78,49 @@ public class Test {
 		new Ghost(lab);
 		new Ghost(lab);
 		new Ghost(lab);
-		
+
 		lab.run();
 		lab.waitFinish();
 	}
 	private static void testcase3(){
 		info("\n" + "\n" + "--------- Testcase 3 ---------" );
-		info("'BornDie' is born on a ghost field");
+		info("'Born2Die' is born on a ghost field");
 		Labyrinth lab = new Labyrinth(20, 20);
 
 		new TreasureHunter(lab, 5, 5, "Born2Die");
 		new Ghost(lab, 5, 5);
-		
+
 		lab.run();
 		lab.waitFinish();
-		
-		info(" \n"  + "\n" + " ... Tests finished!");
-	
 	}
-	
-	
+
+	private static void testcase4(){
+
+		info("--------- Testcase 4 ---------");
+		info("small labyrinth"  + "\n");
+
+		Labyrinth lab = new Labyrinth(3, 2);
+		new TreasureHunter(lab, "Karl");
+		new TreasureHunter(lab, "Fritz");
+		new TreasureHunter(lab, "Sepp");
+		new TreasureHunter(lab, "Franz");
+		new TreasureHunter(lab, "Andi");
+
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+		new Ghost(lab);
+
+		lab.run();
+		lab.waitFinish();
+
+		info(" \n"  + "\n" + " ... Tests finished!");
+
+	}
+
+
 	public static void out(String...out) {
 		for (String s : out) {
 			System.out.print(s);
@@ -111,7 +135,7 @@ public class Test {
 		System.out.print("ERROR: ");
 		Test.out(out);
 	}
-	
+
 	public static void assert_(boolean cond, String out) {
 		while(!cond) {
 			error(out);

@@ -29,7 +29,7 @@ public class Labyrinth {
 	 * 		 at given coordinates
 	 */
 	public Field randomField(int x, int y) {
-		return new Field(x, y, rand.nextBoolean(), rand.nextBoolean(), rand.nextInt(1000));
+		return new Field(x, y, rand.nextBoolean(), rand.nextBoolean(), rand.nextInt(100));
 	}
 	
 	public Labyrinth(Field[][] fields) {
