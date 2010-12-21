@@ -12,6 +12,10 @@ public class Ghost extends BasicPlayer {
 	public void print() {
 	}
 
+	/*
+	 * pre: field != null; field >= 0
+	 * post: ghost enters new field
+	 */
 	@Override
 	protected void enterTo(Field field) {
 		field.enter(this);

@@ -1,12 +1,11 @@
-
+/*
+ * Basic class for ghosts and treasure hunters
+ */
 public abstract class BasicPlayer extends Thread {
 	protected final Labyrinth labyrinth;
 	protected Field field;
+	//alive will be modified by different threads
 	volatile protected boolean alive = true;
-	
-	protected long getSleepTime() {
-		return 2 + Labyrinth.rand.nextInt(8);
-	}
 	
 	public BasicPlayer(Labyrinth labyrinth, int x, int y){
 		labyrinth.addPlayer(this);
@@ -18,13 +17,31 @@ public abstract class BasicPlayer extends Thread {
 		this.labyrinth = labyrinth;
 		field = labyrinth.fields[Labyrinth.rand.nextInt(labyrinth.getWidth())][Labyrinth.rand.nextInt(labyrinth.getHeight())];
 	}
+	
+	/*
+	 * post: puts the thread to sleep for a random time
+	 */
+	protected long getSleepTime() {
+		return 2 + Labyrinth.rand.nextInt(8);
+	}
+	
+	/*
+	 * post: return true if player is still alive
+	 */
 	public boolean isPlayerAlive(){
 		return alive;
 	}
 	
 	
 	abstract public void print();
+	
 	abstract protected void enterTo(Field field);
+	
+	/*
+	 * post: game starts: ghosts and hunters move 
+	 * 		 - leave current field, enter new field and stay there for a random time
+	 * 		 as long as they are alive
+	 */
 	public void run(){
 		enterTo(field);
 		while (labyrinth.running){

@@ -15,16 +15,27 @@ public class TreasureHunter extends BasicPlayer {
 		this.name = name;
 	}
 	
+	/*
+	 * post: treasure hunter is killed;
+	 * 		 if all treasure hunters are killed, the game is over
+	 */
 	public void kill() {
 		alive = false;
 		if(!labyrinth.someAlive()) labyrinth.finish();
 	}
 	
+	/*
+	 * pre: value of treasure >= 0
+	 * post: the value of the treasure is added to the account of the hunter
+	 */
 	public void addTreasure(int treasure){
 		purse += treasure;
 	}
 	
-
+	/*
+	 * post: returns the name and the final value of a hunters' purse if he's alive
+	 * 		 or returns the name and the status "dead"
+	 */
 	@Override
 	public void print() {
 		if (alive) {
@@ -34,6 +45,12 @@ public class TreasureHunter extends BasicPlayer {
 		}
 	}
 
+	/*
+	 * pre: field != null; field >= 0
+	 * post: player enters another field;
+	 * 		 if he's reached the max steps and is alive: print name and status "reached max steps"
+	 * 		 if he's reached one of the exits and is still alive: print name and status "reached exit"
+	 */
 	@Override
 	protected void enterTo(Field field) {
 		field.enter(this);
