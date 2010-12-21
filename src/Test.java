@@ -96,7 +96,7 @@ public class Test {
 
 	private static void testcase4(){
 
-		info("--------- Testcase 4 ---------");
+		info("\n" + "\n" + "--------- Testcase 4 ---------");
 		info("small labyrinth"  + "\n");
 
 		Labyrinth lab = new Labyrinth(3, 2);
