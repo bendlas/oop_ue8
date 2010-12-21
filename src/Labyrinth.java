@@ -47,7 +47,7 @@ public class Labyrinth {
 	}
 	
 	public Field randomField(int x, int y) {
-		return new Field(x, y, rand.nextBoolean(), rand.nextBoolean(), rand.nextInt(1000));
+		return new Field(x, y, rand.nextBoolean(), rand.nextBoolean(), rand.nextInt(3));
 	}
 
 	public int getWidth() {
