@@ -12,6 +12,7 @@ public abstract class BasicPlayer extends Thread {
 		this.labyrinth = labyrinth;
 		field = this.labyrinth.fields[x][y];
 	}
+	//if not dedicated the player is set to a random field in the labyrinth
 	public BasicPlayer(Labyrinth labyrinth) {
 		labyrinth.addPlayer(this);
 		this.labyrinth = labyrinth;
@@ -19,7 +20,7 @@ public abstract class BasicPlayer extends Thread {
 	}
 	
 	/*
-	 * post: puts the thread to sleep for a random time
+	 * post: returns a random (between 2 & 10) set sleepTime
 	 */
 	protected long getSleepTime() {
 		return 2 + Labyrinth.rand.nextInt(8);

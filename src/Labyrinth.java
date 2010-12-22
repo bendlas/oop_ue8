@@ -10,6 +10,7 @@ public class Labyrinth {
 	//running will be modified by different threads
 	volatile boolean running = true;
 	
+	//pre: width & height >0
 	public Labyrinth(int width, int height) {
 		assert width > 0;
 		assert height > 0;
@@ -32,6 +33,7 @@ public class Labyrinth {
 		return new Field(x, y, rand.nextBoolean(), rand.nextBoolean(), rand.nextInt(3));
 	}
 	
+	//WIRD IMO NIRGENDS BENÖTIGT
 	public Labyrinth(Field[][] fields) {
 		assert fields.length > 0;
 		Integer h = null;
@@ -124,9 +126,9 @@ public class Labyrinth {
 	Field[][] fields;
 	
 	/*
-	 * pre: field != null; field >= 0
+	 * pre: field != null; 
 	 * post: returns one of the fields from all the possible ways to go
-	 * 		 (not possible is going through walls or going out of the gamescreen when there's no exit)
+	 * 		 (not possible is going through walls or going out of the gamescreen when there's no exit >>stay at field)
 	 */
 	public Field randomNext(Field from) {
 		Field[] choice = new Field[5];

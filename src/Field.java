@@ -10,7 +10,7 @@ public class Field {
 	private Set<Ghost> ghosts = new HashSet<Ghost>();
 	private Set<TreasureHunter> hunters = new HashSet<TreasureHunter>();
 	
-	//each field has a treasure at the beginning
+	//each field has a treasure at the beginning (treasure can be 0)
 	public Field(int x, int y, boolean northWall, boolean eastWall, int treasure) {
 		this.northWall = northWall;
 		this.eastWall = eastWall;
@@ -21,8 +21,9 @@ public class Field {
 	
 	/*
 	 * pre: player != null
-	 * post: ghost enters field
+	 * post: ghost is added to this field
 	 */
+	//is synchronized because its public
 	synchronized public void enter(Ghost player) {
 		ghosts.add(player);
 		logicTick();
@@ -30,8 +31,9 @@ public class Field {
 	
 	/*
 	 * pre: player != null
-	 * post: hunter enters field
+	 * post: hunter is added to this field
 	 */
+	//is synchronized because its public
 	synchronized public void enter(TreasureHunter player) {
 		hunters.add(player);
 		logicTick();
@@ -39,16 +41,18 @@ public class Field {
 	
 	/*
 	 * pre: player != null
-	 * post: ghost or hunter leave field
+	 * post: a Player is removed from this field
 	 */
+	//is synchronized because its public
 	synchronized public void leave(BasicPlayer player) {
 		ghosts.remove(player);
 		hunters.remove(player);
 	}
 	
-	/*
+	/*"field logic"
 	 * post: if >= 1 hunter are on a field with >= 1 ghost, all hunters will be killed
 	 * 		 if no ghost is on the field, the treasure is added to the purse of the first hunter entering the field
+	 * 		 afterwards the treasure is 0
 	 */
 	private void logicTick() {
 		Iterator<TreasureHunter> hunterSeq = hunters.iterator();

@@ -46,7 +46,7 @@ public class TreasureHunter extends BasicPlayer {
 	}
 
 	/*
-	 * pre: field != null; field >= 0
+	 * pre: field != null; 
 	 * post: player enters another field;
 	 * 		 if he's reached the max steps and is alive: print name and status "reached max steps"
 	 * 		 if he's reached one of the exits and is still alive: print name and status "reached exit"

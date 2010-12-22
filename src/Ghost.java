@@ -13,7 +13,7 @@ public class Ghost extends BasicPlayer {
 	}
 
 	/*
-	 * pre: field != null; field >= 0
+	 * pre: field != null;
 	 * post: ghost enters new field
 	 */
 	@Override
