@@ -10,7 +10,7 @@ public class Field {
 	private Set<Ghost> ghosts = new HashSet<Ghost>();
 	private Set<TreasureHunter> hunters = new HashSet<TreasureHunter>();
 	
-	//each field has a treasure at the beginning (treasure can be 0)
+	//each field has a treasure at the beginning (0 <= treasure < 3)
 	public Field(int x, int y, boolean northWall, boolean eastWall, int treasure) {
 		this.northWall = northWall;
 		this.eastWall = eastWall;

@@ -26,14 +26,14 @@ public class Labyrinth {
 	
 	/* 
 	 * pre: x and y >= 0
-	 * post: returns Field with random properties (random northwall, random eastwall, random value of treasure)
+	 * post: returns Field with random properties (random northwall, random eastwall, 0 <= treasure < 3)
 	 * 		 at given coordinates
 	 */
 	public Field randomField(int x, int y) {
 		return new Field(x, y, rand.nextBoolean(), rand.nextBoolean(), rand.nextInt(3));
 	}
 	
-	//WIRD IMO NIRGENDS BENÖTIGT
+	/*
 	public Labyrinth(Field[][] fields) {
 		assert fields.length > 0;
 		Integer h = null;
@@ -51,7 +51,7 @@ public class Labyrinth {
 		}
 		assert h > 0;
 		this.fields = fields;
-	}
+	}*/
 	
 	/*
 	 * pre: basic player != null
@@ -95,7 +95,7 @@ public class Labyrinth {
 	}
 
 	/*
-	 * pre: field != null; field >= 0
+	 * pre: field != null;
 	 * post: returns true if field is exit (can only occur at north- or eastside)
 	 */
 	public boolean isExit(Field field) {
@@ -128,7 +128,8 @@ public class Labyrinth {
 	/*
 	 * pre: field != null; 
 	 * post: returns one of the fields from all the possible ways to go
-	 * 		 (not possible is going through walls or going out of the gamescreen when there's no exit >>stay at field)
+	 * 		 (not possible is going through walls or going out of the gamescreen when there's no exit;
+	 * 		 possible is staying at field)
 	 */
 	public Field randomNext(Field from) {
 		Field[] choice = new Field[5];

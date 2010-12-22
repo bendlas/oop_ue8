@@ -20,7 +20,7 @@ public abstract class BasicPlayer extends Thread {
 	}
 	
 	/*
-	 * post: returns a random (between 2 & 10) set sleepTime
+	 * post: returns a random (between 2 & 10) sleepTime for the player thread
 	 */
 	protected long getSleepTime() {
 		return 2 + Labyrinth.rand.nextInt(8);
